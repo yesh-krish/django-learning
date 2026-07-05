@@ -7,7 +7,14 @@
     <p>Post count: {{ posts|length }}</p>
 
     {% for post in posts %}
-        <h2>{{ post.title }}</h2>
+        <h2>
+            {% if post.slug %}
+                <a href="{% url 'posts:page' slug=post.slug %}">{{ post.title }}</a>
+            {% else %}
+                <a href="{% url 'posts:page_by_pk' pk=post.pk %}">{{ post.title }}</a>
+            {% endif %}
+        </h2>
+        <p><small>{{ post.date|date:"F j, Y, P" }}</small></p>
         <p>{{ post.body }}</p>
     {% empty %}
         <p>No posts available.</p>
