@@ -3,6 +3,9 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
+    {% if post.banner %}
+        <img src="{{ post.banner.url }}" alt="Banner Image" style="max-width: 100%; height: auto;">
+    {% endif %}
     <h1>{{ post.title }}</h1>
     <p>{{ post.date|date:"F j, Y, P" }}</p>
     <p>{{ post.body }}</p>
