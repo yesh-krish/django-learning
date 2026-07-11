@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('about/', views.about, name='about'),
     path('posts/', include('posts.urls')),
+    path('users/', include('users.urls')),
 ]
 
 if settings.DEBUG:
